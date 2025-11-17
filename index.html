@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expression Solver | Polynomial Calculator</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">EXPRESSION SOLVER</div>
+      <ul class="nav-links">
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#operations">Operations</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <section id="calculator" class="Calculator">
+    <div class="content">
+      <h1>Polynomial Calculator</h1>
+      <p>Enter polynomials using standard notation (example: <b>3x<sup>2</sup> - 2x + 5</b>). Use "^" for powers.</p>
+
+            <div class="calculator-form">
+        <fieldset>
+          <legend>Input Polynomials</legend>
+
+          <label for="poly1">Polynomial A:</label>
+          <input type="text" id="poly1" name="poly1" placeholder="e.g. 3x^3 - 2x + 1" />
+
+                    <label for="poly2" class="hidden">Polynomial B (optional):</label>
+          <input type="text" id="poly2" name="poly2" placeholder="e.g. x^2 + 4x - 7" class="hidden" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Choose Operation</legend>
+          <label for="operation">Operation:</label>
+          <select id="operation" name="operation">
+            <option value="add">Add (A + B)</option>
+            <option value="subtract">Subtract (A - B)</option>
+            <option value="multiply">Multiply (A × B)</option>
+            <option value="divide">Divide (A ÷ B)</option>
+            <option value="derivativeA">Derivative of A</option>
+            <option value="derivativeB">Derivative of B</option>
+            <option value="integralA">Integral of A</option>
+            <option value="integralB">Integral of B</option>
+            <option value="evaluateA">Evaluate A at x</option>
+            <option value="evaluateB">Evaluate B at x</option>
+          </select>
+
+                    <label for="evalPoint" class="hidden">Value of x:</label>
+          <input type="text" id="evalPoint" name="evalPoint" placeholder="e.g. 2 or 3.5" class="hidden" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Options</legend>
+          <label><input type="checkbox" id="simplify" name="simplify" checked disabled /> Simplify result (Always On)</label>
+          <label><input type="checkbox" id="showSteps" name="showSteps" disabled/> Show steps (Coming Soon)</label>
+        </fieldset>
+
+        <div class="btn-group">
+                    <button type="button" id="compute-btn" class="btn-primary">Compute</button>
+          <button type="button" id="reset-btn" class="btn-secondary">Reset</button>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <h2>Result</h2>
+        <textarea id="result" rows="6" readonly placeholder="Computation result will appear here..."></textarea>
+      </div>
+    </div>
+  </section>
+
+    <section id="operations" class="operations">
+  <div class="operations-container">
+    <h1>⚙ Operations & Input Guide</h1>
+    <div class="operation-grid">
+      <div class="operation-card">
+        <h2>Add / Subtract / Multiply</h2>
+        <p>Enter both <b>A(x)</b> and <b>B(x)</b> in standard form (e.g. <code>4x^3 - 2x + 7</code>).<br>
+        These operations combine or modify polynomial coefficients directly.</p>
+      </div>
+      <div class="operation-card">
+        <h2>Divide</h2>
+        <p>Provides <b>Quotient</b> and <b>Remainder</b> when dividing <b>A(x)</b> by <b>B(x)</b>.<br>
+        Example: <code>(x³ - 2x + 4) ÷ (x - 1)</code>.</p>
+      </div>
+      <div class="operation-card">
+        <h2>Derivative</h2>
+        <p>Select <b>Derivative of A</b> or <b>B</b> to compute <b>d/dx</b> of the selected polynomial.<br>
+        Example: <code>d/dx(3x² + 4x) = 6x + 4</code>.</p>
+      </div>
+      <div class="operation-card">
+        <h2>Integral</h2>
+        <p>Computes the <b>Indefinite Integral</b> of A(x) or B(x).<br>
+        Example: <code>∫(2x + 3) dx = x² + 3x + C</code>.</p>
+      </div>
+      <div class="operation-card">
+        <h2>Evaluate</h2>
+        <p>Choose <b>Evaluate A</b> or <b>B</b>, then provide a numeric value for <b>x</b>.<br>
+        Example: <code>A(x) = 2x² + 3x + 1 → A(2) = 15</code>.</p>
+      </div>
+    </div>
+    <div class="operation-note">
+      <p><b>Note:</b> Use <b>x</b> for variable and <b>^</b> for exponents (e.g. <code>4x^3 - 2x + 7</code>).</p>
+      <p>This interface is connected to a Python backend to process calculations dynamically.</p>
+    </div>
+  </div>
+</section>
+
+
+    <section id="examples" class="examples">
+  <div class="examples-container">
+    <h1>📘 Example Calculations</h1>
+    <p class="examples-intro">
+      Here are a few example expressions you can try in the Expression Solver.
+      Each demonstrates a different type of operation:
+    </p>
+    <div class="example-grid">
+      <div class="example-card">
+        <h2>Addition</h2>
+        <p><b>A(x):</b> 3x^2 + 2x - 5<br>
+           <b>B(x):</b> x^2 - x + 1</p>
+        <div class="example-result">
+          <b>Result:</b> 4x^2 + x - 4
+        </div>
+      </div>
+      <div class="example-card">
+        <h2>Subtraction</h2>
+        <p><b>A(x):</b> 5x^3 - 2x^2 + 3<br>
+           <b>B(x):</b> 2x^3 + x^2 - 4</p>
+        <div class="example-result">
+          <b>Result:</b> 3x^3 - 3x^2 + 7
+        </div>
+      </div>
+      <div class="example-card">
+        <h2>Derivative</h2>
+        <p><b>A(x):</b> x^3 - 4x</p>
+        <div class="example-result">
+          <b>dA/dx:</b> 3x^2 - 4
+        </div>
+      </div>
+      <div class="example-card">
+        <h2>Integral</h2>
+        <p><b>A(x):</b> 2x + 3</p>
+        <div class="example-result">
+          <b>∫A dx:</b> x^2 + 3x + C
+        </div>
+      </div>
+      <div class="example-card">
+        <h2>Evaluation</h2>
+        <p><b>A(x):</b> 2x^2 + 3x + 1</p>
+        <div class="example-result">
+          <b>At x = 2:</b> 15
+        </div>
+      </div>
+    </div>
+    <div class="examples-note">
+      <p>Try editing the equations above or creating your own! Use <b>x</b> for variables and <b>^</b> for powers.</p>
+      <p><b>Example:</b> <code>4x^3 - 2x + 7</code></p>
+    </div>
+  </div>
+</section>
+
+
+   <footer id="about" class="footer">
+  <div class="footer-container">
+        <div class="footer-about">
+      <h2>About Us</h2>
+      <p>
+        Empowering your workflow with smart, stylish, and reliable tools — 
+        including our advanced <b>Expression Solver</b> for polynomial operations, calculus, and beyond.
+      </p>
+      <button class="learn-more" onclick="location.href='#'">Learn More</button>
+    </div>
+        <div class="footer-links">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#calculator">🏠 Calculator</a></li>
+        <li><a href="#operations">⚙ Operations</a></li>
+        <li><a href="#examples">📘 Examples</a></li>
+        <li><a href="#about">📩 About Us</a></li>
+      </ul>
+    </div>
+  <div class="footer-bottom">
+    <p>© 2025 <b>DGA²</b> | Designed with ❤ by <b>DGA²</b></p>
+  </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
